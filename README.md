@@ -2,7 +2,6 @@
 
 <img src="./assets/logo.png" style="width:150px;border-radius:100%"/>
 <br/>
-<br/>
 
 Casu is a typescript client implementation for [espresso]("https://www.espressosys.com") sequencer, it allows you talk with an espresso sequencer node in a type safe, reliable manner.
 
