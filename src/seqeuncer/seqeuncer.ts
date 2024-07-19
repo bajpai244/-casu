@@ -1,4 +1,9 @@
-import type { Hex } from "../types";
+import type {
+  Hex,
+  TaggedBase64,
+  Transaction,
+  TransactionTagPrefix,
+} from "../types";
 import { SequencerApiClient } from "./api/client";
 import { Endpoints } from "./api/endpoints";
 import type { ISequencerApiClient } from "./api/types";
@@ -42,6 +47,15 @@ export class Sequencer implements ISequencer {
     const response = await this.apiClient.get<string>(
       Endpoints.SequencerEndpoints.metrics,
     );
+    return response.data;
+  }
+
+  async submitTransaction(
+    tx: Transaction,
+  ): Promise<TaggedBase64<TransactionTagPrefix>> {
+    const response = await this.apiClient.post<
+      TaggedBase64<TransactionTagPrefix>
+    >(Endpoints.SubmitEndpoints.submit, tx);
     return response.data;
   }
 

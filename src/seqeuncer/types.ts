@@ -1,4 +1,9 @@
-import type { Hex } from "../types";
+import type {
+  Hex,
+  TaggedBase64,
+  Transaction,
+  TransactionTagPrefix,
+} from "../types";
 
 export type SequencerConfig = {
   apiVersion: string;
@@ -10,6 +15,11 @@ export interface ISequencer {
   getSuccessRate(): Promise<number>;
   getTimeSinceLastDecide(): Promise<number>;
   getMetrics(): Promise<string>;
+
+  // Submit API
+  submitTransaction(
+    tx: Transaction,
+  ): Promise<TaggedBase64<TransactionTagPrefix>>;
 
   getApiVersion(): string;
 

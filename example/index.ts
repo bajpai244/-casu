@@ -28,6 +28,22 @@ const main = async () => {
 
   // long output, feel free to uncomment
   //   console.log("metrics", await sequencer.getMetrics());
+
+  console.log("submitting transaction ...");
+  const tx = {
+    from: "0xabcdef",
+    value: "0x123456",
+    data: "x0abcdef123456",
+  };
+  const txBuffer = Buffer.from(JSON.stringify(tx)).toString("base64");
+
+  console.log(
+    "tx:",
+    await sequencer.submitTransaction({
+      namespace: 0,
+      payload: txBuffer,
+    }),
+  );
 };
 
 main();

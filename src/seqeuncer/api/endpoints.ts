@@ -5,6 +5,11 @@ const SequencerEndpoints = {
   metrics: "status/metrics",
 };
 
+const SubmitEndpoints = {
+  submit: "submit/submit",
+};
+
 export const Endpoints = {
   SequencerEndpoints,
+  SubmitEndpoints,
 };
