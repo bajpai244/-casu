@@ -5,12 +5,14 @@ export interface ISequencerApiClient {
 
   post<T>(
     url: string,
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     data?: any,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>>;
 
   put<T>(
     url: string,
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     data?: any,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>>;
@@ -19,4 +21,10 @@ export interface ISequencerApiClient {
     URL: string,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>>;
+
+  getNodeUrl(): string;
+  getApiVersion(): string;
+
+  setNodeUrl(nodeUrl: string): void;
+  setApiVersion(apiVersion: string): void;
 }

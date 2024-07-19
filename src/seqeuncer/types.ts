@@ -1,21 +1,21 @@
-import type { Hex } from "../types"
+import type { Hex } from "../types";
 
 export type SequencerConfig = {
-    apiVersion: string
-}
+  apiVersion: string;
+};
 
 export interface ISequencer {
-    // Status APIs
-    getBlockHeight() : Hex
-    getSuccessRate(): number
-    getTimeSinceLastDecide(): number
-    getMetrics(): string
+  // Status APIs
+  getBlockHeight(): Promise<Hex>;
+  getSuccessRate(): Promise<number>;
+  getTimeSinceLastDecide(): Promise<number>;
+  getMetrics(): Promise<string>;
 
+  getApiVersion(): string;
 
+  getNodeUrl(): string;
+  getApiVersion(): string;
 
-
-    getApiVersion(): string
-
-    setUrl(url: string) : void
-    getUrl(url: string): void
+  setNodeUrl(nodeUrl: string): void;
+  setApiVersion(apiVersion: string): void;
 }
