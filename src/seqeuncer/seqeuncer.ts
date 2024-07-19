@@ -1,6 +1,6 @@
 import type { Hex } from "../types";
 import { SequencerApiClient } from "./api/client";
-import { Endpoints } from "./api/endpoint";
+import { Endpoints } from "./api/endpoints";
 import type { ISequencerApiClient } from "./api/types";
 import type { ISequencer, SequencerConfig } from "./types";
 
@@ -17,10 +17,11 @@ export class Sequencer implements ISequencer {
   }
 
   async getBlockHeight(): Promise<Hex> {
-    const response = await this.apiClient.get<Hex>(
+    const response = await this.apiClient.get<number>(
       Endpoints.SequencerEndpoints.blockHeight,
     );
-    return response.data;
+
+    return `0x${response.data.toString(16)}`;
   }
 
   async getSuccessRate(): Promise<number> {
@@ -39,7 +40,7 @@ export class Sequencer implements ISequencer {
 
   async getMetrics(): Promise<string> {
     const response = await this.apiClient.get<string>(
-      Endpoints.SequencerEndpoints.timeSinceLastDecide,
+      Endpoints.SequencerEndpoints.metrics,
     );
     return response.data;
   }
